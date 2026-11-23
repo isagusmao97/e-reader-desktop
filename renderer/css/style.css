@@ -1,0 +1,678 @@
+
+:root {
+  /* Cores da interface */
+  --antique-white: #f5ebdc;
+  --coconut-cream: #fff6ee;
+  --celery-ice: #eaebd1;
+  --dusty-coal: #222222;
+  --vanilla: #f7e6a9;
+  --bisque: #ffe4c4;
+
+  /* Cor de destaque */
+  --accent: #dc53c5;
+
+  /* Cores das marcações de texto */
+  --apple: #903F45;
+  --viridian: #618A7F;
+  --soft-olive: #B6C99B;
+  --glaucous: #6082B6;
+  --violet: #8089D2;
+  --sweet-pink: #FFA5B1;
+  --muted-pink: #D87E7E;
+  --sunshade: #FF914D;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--dusty-coal);
+  font-family: Arial, sans-serif;
+  color: var(--dusty-coal);
+}
+
+.home-container {
+  display: flex;
+  width: calc(100% - 20px);
+  height: calc(100% - 20px);
+  margin: 10px;
+  overflow: hidden;
+  border-radius: 14px;
+  background: var(--coconut-cream);
+}
+
+/* Painel da biblioteca */
+
+.library-panel {
+  width: 42%;
+  min-width: 360px;
+  padding: 65px 34px 35px;
+  background: var(--coconut-cream);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1;
+}
+
+.brand {
+  text-align: center;
+}
+
+.brand h1 {
+  color: var(--accent);
+  font-family: Georgia, serif;
+  font-size: 27px;
+  line-height: 1.2;
+  margin-bottom: 35px;
+  letter-spacing: 1px;
+}
+
+.brand p {
+  font-size: 15px;
+  line-height: 1.4;
+  margin-bottom: 32px;
+}
+
+/* Botão adicionar livro */
+
+.add-book-button {
+  width: 185px;
+  height: 44px;
+  border: none;
+  border-radius: 5px;
+  background: var(--accent);
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.add-book-button:hover {
+  filter: brightness(0.92);
+  transform: translateY(-2px);
+}
+
+/* Mensagens */
+
+.status-message {
+  margin-top: 10px;
+  font-size: 12px;
+  color: #618a7f;
+}
+
+/* Últimas leituras */
+
+.recent-section {
+  width: 100%;
+  margin-top: 48px;
+}
+
+.recent-section h2 {
+  font-size: 14px;
+  font-weight: normal;
+  margin-bottom: 25px;
+}
+
+.recent-books {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+}
+
+.empty-library {
+  color: #888;
+  font-size: 13px;
+}
+
+/* Painel da ilustração */
+
+.illustration-panel {
+  flex: 1;
+  position: relative;
+  background-color: var(--dusty-coal);
+  background-image: url("../assets/images/banner.png");
+  background-size: cover;
+  background-position: center;
+  border-radius: 0 12px 12px 0;
+}
+
+.illustration-close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 35px;
+  color: var(--dusty-coal);
+  cursor: pointer;
+}
+
+/* Responsividade */
+
+@media (max-width: 800px) {
+  .library-panel {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .illustration-panel {
+    display: none;
+  }
+}
+
+.book-card {
+  width: 145px;
+  min-width: 145px;
+  height: 190px;
+  padding: 12px;
+  border-radius: 6px;
+  background: var(--antique-white);
+  border: 1px solid #e4d8c9;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.book-card p {
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+
+.book-card {
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.book-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.12);
+}
+
+
+
+/* ==============================
+   TELA DE LEITURA
+============================== */
+
+.reader-screen {
+  width: calc(100% - 32px);
+  height: calc(100% - 32px);
+  margin: 16px;
+  border-radius: 14px;
+  background: var(--coconut-cream);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+
+}
+
+.reader-screen[hidden] {
+  display: none;
+}
+
+/* Cabeçalho */
+
+.reader-header {
+  height: 65px;
+  min-height: 65px;
+  padding: 0 28px;
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  border-bottom: 1px solid #e8a08d;
+}
+
+.reader-header h2 {
+  flex: 1;
+  font-family: Georgia, serif;
+  font-size: 19px;
+  font-weight: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.reader-tools {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.icon-button {
+  min-width: 35px;
+  height: 35px;
+  border: none;
+  background: transparent;
+  color: #d87e68;
+  font-size: 21px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.icon-button:hover {
+  background: var(--antique-white);
+}
+
+/* Área de leitura */
+
+.reading-area {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: stretch;
+  position: relative;
+  padding: 15px 5px;
+}
+
+#viewer {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  overflow: hidden;
+  background: var(--coconut-cream);
+}
+
+#viewer iframe {
+  border: none !important;
+}
+
+.page-button {
+  width: 40px;
+  min-width: 40px;
+  border: none;
+  background: transparent;
+  color: #d87e68;
+  font-size: 30px;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.page-button:hover {
+  color: var(--dusty-coal);
+}
+
+/* Rodapé */
+
+.reader-footer {
+  min-height: 55px;
+  padding: 8px 28px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  border-top: 1px solid #e8a08d;
+  font-size: 12px;
+  color: #777;
+}
+
+.progress-container {
+  height: 4px;
+  flex: 1;
+  background: #d6d6c8;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+#progressBar {
+  width: 0%;
+  height: 100%;
+  background: #618a7f;
+  transition: width 0.2s;
+}
+
+#progressText {
+  min-width: 40px;
+  text-align: right;
+}
+
+/* Responsividade */
+
+@media (max-width: 800px) {
+  .reader-header {
+    padding: 0 12px;
+    gap: 10px;
+  }
+
+  .reading-area {
+    padding: 10px 0;
+  }
+
+  .page-button {
+    width: 30px;
+    min-width: 30px;
+  }
+
+  .reader-footer {
+    padding: 8px 12px;
+    gap: 10px;
+  }
+}
+
+
+/* =================================
+   CARTÕES DA BIBLIOTECA
+================================= */
+
+.book-card {
+    position: relative;
+
+    width: 145px;
+    min-width: 145px;
+    height: 200px;
+
+    padding: 0;
+    border-radius: 6px;
+    overflow: hidden;
+
+    background: var(--antique-white);
+    border: 1px solid #e4d8c9;
+
+    cursor: pointer;
+
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.book-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.12);
+}
+
+/* Capa ocupando todo o cartão */
+
+.book-cover {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: var(--celery-ice);
+    overflow: hidden;
+}
+
+.book-cover img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Informações sobrepostas à capa */
+
+.book-info {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 4px;
+
+    width: 100%;
+    min-width: 0;
+
+    padding: 35px 9px 9px;
+
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        rgba(34, 34, 34, 0.90)
+    );
+
+    box-sizing: border-box;
+}
+
+/* Título */
+
+.book-card .book-title {
+    margin: 0;
+
+    color: var(--coconut-cream);
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 1.3;
+
+    overflow-wrap: break-word;
+    word-break: normal;
+
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
+
+/* Autor */
+
+.book-card .book-author {
+    margin: 0;
+
+    color: var(--antique-white);
+    font-size: 10px;
+    line-height: 1.3;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Progresso */
+
+.book-card .book-progress {
+    display: block;
+    margin-top: 3px;
+
+    color: var(--celery-ice);
+    font-size: 10px;
+}
+
+/* Barra de progresso */
+
+.book-card .book-progress-track {
+    width: 100%;
+    height: 4px;
+
+    background: rgba(255, 246, 238, 0.4);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.book-card .book-progress-bar {
+    height: 100%;
+    background: var(--soft-olive, #b6c99b);
+    border-radius: 10px;
+    transition: width 0.3s ease;
+}
+
+
+/* =================================
+   PAINEL DE MARCADORES
+================================= */
+
+.bookmarks-panel {
+    position: absolute;
+    top: 65px;
+    right: 16px;
+    bottom: 55px;
+
+    width: 300px;
+    max-width: calc(100% - 32px);
+
+    z-index: 10;
+
+    display: flex;
+    flex-direction: column;
+
+    background: var(--coconut-cream);
+    border-left: 1px solid #e8a08d;
+    border-radius: 0 0 8px 8px;
+
+    box-shadow: -4px 4px 15px rgba(0, 0, 0, 0.10);
+    overflow: hidden;
+}
+
+.bookmarks-panel[hidden] {
+    display: none !important;
+}
+
+/* Cabeçalho do painel */
+
+.bookmarks-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 16px;
+
+    border-bottom: 1px solid #e8a08d;
+}
+
+.bookmarks-header h3 {
+    font-family: Georgia, serif;
+    font-size: 16px;
+    font-weight: normal;
+    color: var(--dusty-coal);
+}
+
+/* Lista de marcadores */
+
+.bookmarks-list {
+    flex: 1;
+    min-height: 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    padding: 15px;
+    overflow-y: auto;
+}
+
+.empty-bookmarks {
+    color: #888;
+    font-size: 12px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Cartão individual */
+
+.bookmark-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+
+    padding: 12px;
+
+    background: var(--antique-white);
+    border: 1px solid #e4d8c9;
+    border-radius: 6px;
+
+    transition: background 0.2s;
+}
+
+.bookmark-item:hover {
+    background: var(--bisque);
+}
+
+.bookmark-content {
+    flex: 1;
+    min-width: 0;
+    cursor: pointer;
+}
+
+.bookmark-title {
+    font-family: Georgia, serif;
+    font-size: 13px;
+    color: var(--dusty-coal);
+}
+
+.bookmark-position {
+    display: block;
+    margin-top: 5px;
+    font-size: 11px;
+    color: #888;
+}
+
+.bookmark-delete {
+    width: 28px;
+    height: 28px;
+
+    border: none;
+    border-radius: 4px;
+
+    background: transparent;
+    color: #d87e68;
+
+    font-size: 17px;
+    cursor: pointer;
+}
+
+.bookmark-delete:hover {
+    background: var(--bisque);
+    color: #a94d3b;
+}
+
+/* Botão de marcador ativo */
+
+#addBookmarkButton.active {
+    background: var(--antique-white);
+    color: var(--accent);
+}
+
+/* NOTIFICAÇÕES */
+
+.notification {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translate(-50%, 20px);
+  background: var(--dusty-coal);
+  color: var(--coconut-cream);
+  padding: 12px 22px;
+  border-radius: 8px;
+  font-family: Georgia, serif;
+  font-size: 13px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 1000;
+  pointer-events: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.notification.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+}
+
+/* Responsividade */
+
+@media (max-width: 800px) {
+    .bookmarks-panel {
+        right: 8px;
+        width: 270px;
+    }
+}
+
+
+#homeScreen[hidden],
+#readerScreen[hidden] {
+  display: none !important;
+}

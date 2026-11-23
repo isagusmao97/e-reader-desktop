@@ -1,0 +1,163 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Just One More Chapter</title>
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <main id="homeScreen" class="home-container">
+
+    <!-- Painel esquerdo -->
+    <section class="library-panel">
+
+      <header class="brand">
+        <h1>✦ JUST ONE<br>MORE CHAPTER ✦</h1>
+        <p>Escolha um arquivo em formato EPUB<br>
+          e comece a sua aventura</p>
+      </header>
+
+      <button id="addBookButton" class="add-book-button">
+        Adicionar Livro
+      </button>
+
+      <p id="statusMessage" class="status-message"></p>
+
+      <section class="recent-section">
+        <h2>Últimas leituras</h2>
+
+        <div id="recentBooks" class="recent-books">
+
+          <div class="empty-library">
+            <p>Suas leituras aparecerão aqui.</p>
+          </div>
+
+        </div>
+      </section>
+
+    </section>
+
+    <!-- Painel direito: ilustração -->
+    <section class="illustration-panel">
+
+      <div class="illustration-close">×</div>
+
+    </section>
+
+  </main>
+
+   <!-- TELA DE LEITURA -->
+  <main id="readerScreen" class="reader-screen" hidden>
+
+    <header class="reader-header">
+
+      <button id="backButton" class="icon-button" title="Voltar">
+        ←
+      </button>
+
+      <h2 id="bookTitle">Nome do livro</h2>
+
+      <div class="reader-tools">
+
+        <button id="addBookmarkButton"
+                class="icon-button"
+                title="Adicionar marcador">
+            🔖
+        </button>
+
+        <button id="showBookmarksButton"
+                class="icon-button"
+                title="Ver marcadores">
+            ⚑
+        </button>
+
+        <button id="decreaseFont" class="icon-button" title="Diminuir letra">
+          A-
+        </button>
+
+        <button id="increaseFont" class="icon-button" title="Aumentar letra">
+          A+
+        </button>
+
+        <button id="closeReader" class="icon-button" title="Fechar livro">
+          ×
+        </button>
+
+      </div>
+
+    </header>
+
+    <aside id="bookmarksPanel" class="bookmarks-panel" hidden>
+
+      <div class="bookmarks-header">
+          <h3>Meus marcadores</h3>
+
+          <button id="closeBookmarksButton"
+                  class="icon-button"
+                  title="Fechar marcadores">
+              ×
+          </button>
+      </div>
+
+      <div id="bookmarksList" class="bookmarks-list">
+
+          <p class="empty-bookmarks">
+              Nenhum marcador salvo.
+          </p>
+
+      </div>
+
+    </aside>
+
+
+    <section class="reading-area">
+
+      <button id="prevPage" class="page-button" title="Página anterior">
+        ←
+      </button>
+
+      <div id="viewer"></div>
+
+      <button id="nextPage" class="page-button" title="Próxima página">
+        →
+      </button>
+
+    </section>
+
+
+    <footer class="reader-footer">
+
+      <span id="pageInfo">Preparando leitura...</span>
+
+      <div class="progress-container">
+        <div id="progressBar"></div>
+      </div>
+
+      <span id="progressText">0%</span>
+
+    </footer>
+
+  </main>
+
+  <div id="notification" class="notification" role="status" aria-live="polite"></div>
+
+
+  <!-- Biblioteca EPUB -->
+  <script src="../node_modules/jszip/dist/jszip.min.js"></script>
+  <script src="../node_modules/epubjs/dist/epub.min.js"></script>
+  
+
+  <!-- Scripts do aplicativo -->
+  <script src="js/reader.js"></script>
+
+  <script src="js/home.js"></script>
+
+</body>
+</html>
