@@ -1,4 +1,4 @@
-![Tela principal do app](.\renderer\assets\images\print-home.png)
+![Tela principal do app](./renderer/assets/images/print-home.png)
 
 # 📖 E-reader para Desktop - Just One More Chapter
 
@@ -17,7 +17,7 @@ Esse projeto foi pensado por mim e fiz do protótipo no Figma até o código. A 
 - **Home** — página inicial com os últimos arquivos abertos(caso seja a primeira vez aberto não aparecerá nada) e um botão para acessar o explorador de arquivos do Windows para adicionar um arquivo `.epub` ao app
 - **Arquivo Aberto** — tela com o conteúdo do arquivo aberto e barra inferior com andamento da leitura em porcentagem, e menu superior com opções de aumentar e diminuir fonte, marcar página e setas para a página anterior e página seguinte. 
 
-![Tela principal do app](.\renderer\assets\images\print-livro-aberto.png)
+![Tela principal do app](./renderer/assets/images/print-livro-aberto.png)
 
 ### 📖 E-reader Just One Chapter
 
