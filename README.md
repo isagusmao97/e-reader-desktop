@@ -39,7 +39,7 @@ renderer/
     style.css # arquivo onde a estilização das páginas do app é definida
   js/
     home.js # arquivo onde as funções de abrir um arquivo, guardar o progresso do livro, pega informações do livro como capa, titulo etc. e definição de notificações
-    reader.js # arquivo onde todas as funcionalidades são definidas como criar passagens do livro, armazenar marcadores do livro, <br> renderizar os arquivos epubs, e salvamento automático da última página aberta do arquivo para abrir de onde parou quando o arquivo <br> for aberto novamente
+    reader.js # arquivo onde todas as funcionalidades são definidas como criar passagens do livro, armazenar marcadores do livro, renderizar os arquivos epubs, e salvamento automático da última página aberta do arquivo para abrir de onde parou quando o arquivo for aberto novamente
     
 ```
 ## ⚙️ Como rodar o projeto
